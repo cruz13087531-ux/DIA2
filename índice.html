@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia Continúa - Junio 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --color-amor-profundo: #0f0204;
+            --color-terciopelo: #2d0b11;
+            --color-oro-sutil: #dfba6b;
+            --color-rosa-romance: #fff0f3;
+            --color-texto: #2c1a1c;
+            --color-guindo: #5c141d;
+            --color-rojo-pasion: #af2235;
+        }
+
+        body {
+            background: radial-gradient(circle at center, var(--color-terciopelo) 0%, var(--color-amor-profundo) 100%);
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- LLUVIA DE CORAZONES FLOTANTES MÁGICOS --- */
+        .corazones-fondo {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .corazon-flotante {
+            position: absolute;
+            bottom: -20px;
+            color: rgba(175, 34, 53, 0.25);
+            font-size: 14px;
+            animation: flotarHaciaArriba 8s linear infinite;
+        }
+
+        @keyframes flotarHaciaArriba {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-105vh) translateX(50px) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- SOBRE INTERACTIVO MISTERIOSO --- */
+        .contenedor-sobre {
+            perspective: 1000px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 550px;
+            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .frase-sobre-superior {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(234, 190, 197, 0.6);
+            text-transform: uppercase;
+            line-height: 1.5;
+            padding: 0 10px;
+        }
+
+        .sobre {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #4a0d14 0%, #2e0509 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,0,0,0.4);
+            cursor: pointer;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sobre:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .sobre::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 275px solid transparent;
+            border-right: 275px solid transparent;
+            border-bottom: 165px solid #5c141d;
+            border-radius: 0 0 12px 12px;
+            z-index: 3;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 550px) {
+            .sobre::before {
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
+            }
+        }
+
+        .solapa {
+            position: absolute;
+            top: 0; left: 0; width: 0; height: 0;
+            border-left: 275px solid transparent;
+            border-right: 275px solid transparent;
+            border-top: 150px solid #250205;
+            transform-origin: top;
+            transition: transform 0.4s ease 0.1s, z-index 0.2s ease 0.1s;
+            z-index: 4;
+        }
+
+        @media (max-width: 550px) {
+            .solapa {
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
+            }
+        }
+
+        .sobre.abierto .solapa {
+            transform: rotateX(180deg);
+            z-index: 1;
+            transition: transform 0.4s ease, z-index 0.2s ease 0.2s;
+        }
+
+        .sello-corazon {
+            position: absolute;
+            z-index: 5;
+            font-size: 45px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+            animation: latidoSello 1.2s infinite;
+            transition: opacity 0.3s ease;
+            bottom: 110px;
+        }
+
+        @keyframes latidoSello {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.15); }
+            40% { transform: scale(1); }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .sobre.abierto .sello-corazon {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .texto-sobre-interior {
+            position: absolute;
+            bottom: 35px;
+            width: 90%;
+            left: 5%;
+            text-align: center;
+            color: var(--color-rosa-romance);
+            z-index: 4;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+            font-family: 'Great Vibes', cursive;
+            font-size: 22px;
+            line-height: 1.4;
+        }
+
+        /* --- TARJETA PRINCIPAL --- */
+        .tarjeta-carta {
+            background-color: #fffefb;
+            background-image: radial-gradient(rgba(240, 200, 200, 0.15) 1.5px, transparent 0);
+            background-size: 30px 30px;
+            padding: 55px 45px;
+            border-radius: 24px;
+            box-shadow: 0px 40px 90px rgba(0, 0, 0, 0.9), inset 0 0 40px rgba(234, 190, 197, 0.15);
+            max-width: 650px;
+            width: 100%;
+            border: 2px solid rgba(223, 186, 107, 0.45);
+            outline: 12px solid rgba(255, 253, 250, 0.08);
+            box-sizing: border-box;
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+            z-index: 1;
+            position: relative;
+        }
+
+        .tarjeta-carta.visible {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .decoracion-esquina {
+            position: absolute;
+            font-size: 26px;
+            filter: drop-shadow(0 2px 4px rgba(175, 34, 53, 0.15));
+        }
+        .esquina-sup-izq { top: 20px; left: 25px; }
+        .esquina-sup-der { top: 20px; right: 25px; }
+        .esquina-inf-izq { bottom: 20px; left: 25px; }
+        .esquina-inf-der { bottom: 20px; right: 25px; }
+
+        .corazon-principal {
+            color: var(--color-rojo-pasion);
+            font-size: 40px;
+            animation: latidoSello 1.4s infinite;
+            display: inline-block;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 4px 10px rgba(175, 34, 53, 0.3));
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: #4a0d14;
+            font-size: 56px;
+            margin: 0 0 5px 0;
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .encabezado-dia {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-rojo-pasion);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 10px 0 30px 0;
+            padding: 5px 15px;
+            display: inline-block;
+            border-bottom: 2px solid var(--color-oro-sutil);
+            line-height: 1.4;
+        }
+
+        /* --- SISTEMA DE PESTAÑAS --- */
+        .contenedor-pestanas {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            font-family: 'Montserrat', sans-serif;
+            border-bottom: 2px solid rgba(92, 20, 29, 0.08);
+            padding-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .pestana-boton {
+            background: #fff3f5;
+            color: var(--color-guindo);
+            border: 1px solid rgba(175, 34, 53, 0.15);
+            padding: 12px 22px;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pestana-boton:hover {
+            background: #ffe4e8;
+            transform: translateY(-1px);
+        }
+
+        .pestana-boton.activa {
+            background: linear-gradient(135deg, var(--color-rojo-pasion) 0%, var(--color-guindo) 100%);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(175, 34, 53, 0.35);
+            font-weight: 600;
+        }
+
+        .contenido-pestana {
+            display: none;
+            text-align: left;
+            animation: romanticFade 0.5s ease;
+        }
+
+        .contenido-pestana.activa {
+            display: block;
+        }
+
+        @keyframes romanticFade {
+            from { opacity: 0; transform: scale(0.99) translateY(4px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .bloque-texto {
+            color: var(--color-texto);
+            font-size: 17px;
+            line-height: 1.9;
+            white-space: pre-line;
+            margin-bottom: 25px;
+        }
+
+        .subtitulo-fecha {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--color-guindo);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px dashed rgba(175, 34, 53, 0.2);
+            padding-bottom: 8px;
+        }
+
+        .bloque-actualizacion {
+            color: #4f3b3d;
+            font-size: 16px;
+            line-height: 1.8;
+            white-space: pre-line;
+            background-color: var(--color-rosa-romance);
+            padding: 26px;
+            border-radius: 16px;
+            border-left: 4px solid var(--color-rojo-pasion);
+            border-right: 4px solid var(--color-rojo-pasion);
+            margin-bottom: 35px;
+            font-style: italic;
+            box-shadow: 0 6px 20px rgba(234, 190, 197, 0.2);
+        }
+
+        /* --- REPRODUCTOR DE MÚSICA MISTERIOSO --- */
+        .seccion-titulo-musica {
+            font-family: 'Great Vibes', cursive;
+            color: var(--color-guindo);
+            font-size: 38px;
+            margin: 40px 0 5px 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .contenedor-musica {
+            background: linear-gradient(to bottom, #fffafb, #fff0f3);
+            padding: 30px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(223, 186, 107, 0.4);
+            margin-top: 15px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(175, 34, 53, 0.04);
+        }
+
+        .titulo-musica {
+            font-family: 'Montserrat', sans-serif;
+            color: #5c141d;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .dedicatoria-cancion {
+            color: #443637;
+            font-size: 15.5px;
+            line-height: 1.85;
+            margin-bottom: 25px;
+            font-style: italic;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid var(--color-rojo-pasion);
+            box-shadow: 0 4px 12px rgba(175, 34, 53, 0.03);
+            white-space: pre-line;
+        }
+
+        .boton-reproductor {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--color-rojo-pasion) 0%, #2e0509 100%);
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            border-radius: 35px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(175, 34, 53, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .boton-reproductor:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(175, 34, 53, 0.45);
+        }
+
+        /* --- SECCIÓN GALERÍA POLAROID --- */
+        .contenedor-galeria {
+            margin-top: 30px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bloque-imagen-polaroid {
+            background: #ffffff;
+            padding: 18px 18px 30px 18px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border: 1px solid rgba(0,0,0,0.05);
+            transform: rotate(-1.5deg);
+            max-width: 85%;
+            transition: transform 0.3s ease;
+        }
+
+        .bloque-imagen-polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .bloque-imagen-polaroid img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #f0f0f0;
+            margin-bottom: 20px;
+        }
+
+        .pie-imagen-polaroid {
+            font-family: 'Great Vibes', cursive;
+            font-size: 28px;
+            color: #4a0d14;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .firma {
+            font-family: 'Great Vibes', cursive;
+            margin-top: 45px;
+            font-size: 45px;
+            color: #4a0d14;
+            text-align: right;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="corazones-fondo" id="corazones-fondo"></div>
+
+    <div class="contenedor-sobre" id="contenedor-sobre">
+        <div class="frase-sobre-superior">Por una historia en donde yo ya no puedo vivir sin mirar tus ojos hermoso</div>
+        <div class="sobre" id="sobre" onclick="abrirCarta()">
+            <div class="solapa"></div>
+            <div class="sello-corazon">❤️</div>
+            <div class="texto-sobre-interior">para el amor de mi vida que se carga tremendos ojos y esa mirada tan linda que tienes, que hoy en dia ya es mi debilidad</div>
+        </div>
+    </div>
+
+    <div class="tarjeta-carta" id="tarjeta-carta">
+        <span class="decoracion-esquina esquina-sup-izq">💖</span>
+        <span class="decoracion-esquina esquina-sup-der">💖</span>
+        <span class="decoracion-esquina esquina-inf-izq">💖</span>
+        <span class="decoracion-esquina esquina-inf-der">💖</span>
+
+        <span class="corazon-principal">💖</span>
+        <h1>Para Wendy</h1>
+        
+        <div class="encabezado-dia">DÍAS 9, 13 Y 16 DE JUNIO DE 2026</div>
+        
+        <div class="contenedor-pestanas">
+            <button class="pestana-boton activa" onclick="cambiarPestana(event, 'tab-diario-junio')">📜 El Inicio de Todo</button>
+            <button class="pestana-boton" onclick="cambiarPestana(event, 'tab-melodias-junio')">🎵 Playlist Personal</button>
+        </div>
+
+        <div id="tab-diario-junio" class="contenido-pestana activa">
+            <div class="bloque-actualizacion">Creo que esta parte de la historia empieza realmente con estos tres días, porque fueron los días en los que terminé de darme cuenta de que ya no quería algo a medias contigo...
+Yo ya quería todo contigo.</div>
+
+            <div class="subtitulo-fecha">✨ 9 de Junio</div>
+            <div class="bloque-texto">Lo recuerdo absolutamente todo, porque ese día salí del teleférico y fui directo a verte a tu trabajo. Pero hay algo que jamás voy a olvidar.
+
+Cuando me preguntaste si me gustaba la salchipapa... y después me dijiste que ya la habías comprado.
+No sabes la felicidad que me dio.
+
+Puede sonar como una tontería, pero para mí fue un detalle enorme. Sentí que habías pensado en mí antes de verme, y eso llegó directo a mi corazón. No sabes cómo me hiciste sentir ese día. Me sentí querido, tomado en cuenta y, sobre todo, importante para alguien.
+Gracias por eso.
+De verdad, gracias.
+
+Después fuimos a comprar tus botas y terminamos hablando de muchas cosas. Ahí fue cuando te dije que eras prácticamente la chica de mis sueños, mi tipo ideal.
+Y no era un cumplido.
+Era exactamente lo que estaba sintiendo.
+
+Recuerdo que te veía caminar al lado mío y pensaba:
+"Mierda... qué loco estoy por esta mujer."
+
+Y mientras más te conocía, más tranquilo me sentía. Era extraño, porque contigo el tiempo pasaba demasiado rápido y, aun así, siempre me quedaba con ganas de seguir hablando un rato más.</div>
+
+            <div class="subtitulo-fecha">✨ 13 de Junio</div>
+            <div class="bloque-texto">Ese día nos volvimos a ver y fue la primera vez que supe dónde vivías.
+No sé cómo explicarlo...
+Pero gracias por esa confianza.
+
+Para mí significó muchísimo que me dejaras acompañarte hasta tu casa. Desde ese día me quedé mucho más tranquilo sabiendo que llegabas bien, y entendí que ya no podía seguir negando lo evidente.
+Ya estaba completamente hechizado por ti.
+
+Ese día casi pierdo mi celular por distraído. JAJAJAJA.
+Y también me animé a comprarte tu fruta favorita. Puede parecer un detalle pequeño, pero me hacía feliz poder darte aunque fuera algo sencillo.
+
+Nos sentamos a hablar con toda la calma del mundo, y esos momentos tan simples terminaron convirtiéndose en algunos de mis favoritos.
+Gracias por regalarme ese tiempo.
+De verdad, gracias por sacar un espacio para mí.
+
+Sé que trabajas muchísimo, que llegas cansada y que aun así hacías un esfuerzo por verme. Nunca voy a olvidar eso.
+Tal vez para ti eran unas horas cualquiera...
+Pero para mí eran las mejores horas de la semana.
+
+Me hacías sentir que también tenía un lugar en tu vida, y eso era un regalo enorme para alguien como yo.
+No sabes cuánto valoro cada minuto que compartiste conmigo.</div>
+
+            <div class="subtitulo-fecha">✨ 16 de Junio</div>
+            <div class="bloque-texto">Nos estábamos viendo cada tres o cuatro días, y la verdad es que cada vez quería verte más.
+Ese día también te acompañé hasta tu casa, pero lo recuerdo por algo muy especial.
+
+Los perritos.
+La forma en la que se acercaban a ti, cómo te buscaban y cómo se notaba que confiaban en ti me hizo darme cuenta del corazón tan bonito que tienes.
+
+Y luego los cachorros..
+Cómo se acercaban cuando llegabas.
+Puede sonar tonto, pero esas cosas hablan mucho de una persona.
+Ahí confirmé que la mujer de la que me estaba enamorando tenía una bondad inmensa.
+
+Y creo que ese fue el día en que entendí que ya había perdido la guerra.
+Ya no quería seguir haciéndome el fuerte.
+Ya no quería seguir fingiendo que solo me gustabas un poquito.
+
+Lo único que quería era decirte lo muchísimo que te quería.
+Porque ya empezaba a amarte como un loco.
+Yo ya quería que fueras mi pareja.
+Quería que fueras mi enamorada.
+Quería construir recuerdos contigo, acompañarte en tus días buenos y en los malos, celebrar tus logros, hacerte reír cuando estuvieras triste y ser un lugar seguro para ti.
+
+Si nunca me declaré en ese momento fue porque también respetaba tus tiempos. Sabía que podías seguir teniendo miedo o que todavía no te sintieras lista, y jamás quise presionarte.
+
+Pero, si soy completamente sincero...
+No sabes cuántas veces imaginé mirarte a los ojos y decirte:
+"Por favor... quédate conmigo. Déjame quererte como te mereces."
+
+Porque para ese momento ya no se trataba solo de que me gustaras.
+Ya admiraba la mujer que eres.
+Admiraba tu forma de trabajar, el esfuerzo que haces todos los días, la manera en la que cuidas a los que quieres, tu corazón tan noble y esos pequeños detalles que probablemente tú ni recuerdas, pero que yo llevo guardados como si fueran tesoros.
+
+Siempre he dicho que tengo muy buena memoria para las fechas.
+La verdad es que no recuerdo las fechas...
+Recuerdo cómo me hiciste sentir en cada una de ellas.
+Y eso nunca se me va a olvidar.
+
+Porque para ese momento...
+Yo ya te amaba muchísimo, Wendy.</div>
+
+            <div class="contenedor-galeria">
+                <div class="bloque-imagen-polaroid">
+                    <img src="image_55c267.png" alt="Recuerdo Feliz">
+                    <div class="pie-imagen-polaroid">Entre mas culero el barrio mas linda la morra</div>
+                </div>
+            </div>
+
+            <div class="bloque-actualizacion" style="font-size: 15px; margin-top: 15px;">"siempre lo dije y si se aplica ajjajaj tome esa foto porque queria publicar eso en mi estado pero me olivde porque dormi como un niño feliz, me desgastas de una manera linda en la que solo llego a mi casa y duermo tannn bien que soy tan feliz que me siento un niño chiquito , y de verdad gracias por amarme tanto y por darme todo de ti gracias por hacerme sentir seguro y por sacar todo lo bueno que tengo...."</div>
+
+            <div class="firma">Con todo mi amor, Leonardo</div>
+        </div>
+
+        <div id="tab-melodias-junio" class="contenido-pestana">
+            <div class="bloque-texto" style="text-align: center; font-style: italic; font-weight: 600; color: var(--color-rojo-pasion); margin-bottom: 10px;">
+                "CANCIONES QUE OFICIALMENTE SON SOLO TUYAS PORQUE LAS ESCUCHO Y SOLO TE RECUERDO A TI..."
+            </div>
+
+            <div class="seccion-titulo-musica">💫 Tu Canción 💫</div>
+            <div class="contenedor-musica">
+                <div class="titulo-musica">🎵 Melodía Sin Tiempo</div>
+                <div class="dedicatoria-cancion">Hay canciones que me recuerdan a ti no por lo que dicen literalmente, sino por cómo me hacen sentir. Esta es una de ellas.
+Me hace pensar en esa versión de mí que juraba que no iba a enamorarse otra vez, que iba a seguir solo y tranquilo... hasta que apareciste tú y, sin darte cuenta, hiciste que todas esas ideas se fueran cayendo una por una.
+A veces pienso que fue muy irresponsable de mi parte dejar que alguien llegara tan profundo en mi corazón...
+Pero, si esa "irresponsabilidad" fue conocerte y enamorarme de ti, entonces no me arrepiento ni un solo segundo.</div>
+                
+                <audio id="audioCancion12" src="cancion12.mp3" preload="auto"></audio>
+                <button class="boton-reproductor" onclick="controlarAudioCompleto('audioCancion12')">
+                    <span id="icono-audioCancion12">▶</span> &nbsp; Escuchar Melodía Completa
+                </button>
+            </div>
+
+            <div class="seccion-titulo-musica">🌹 Mi Cobarde Corazón 🌹</div>
+            <div class="contenedor-musica">
+                <div class="titulo-musica">🎵 Un pedacito de nosotros</div>
+                <div class="dedicatoria-cancion">Esta canción me da risa porque me hace pensar en lo mucho que quería estar contigo. Creo que hasta le tenía celos a cualquier cosa que pasara más tiempo contigo que yo. JAJAJA.
+Mientras más te conocía, más quería verte, escucharte y robarte otra sonrisa. Qué peligroso fue conocerte... terminé más enamorado de lo que mi orgullo estaba dispuesto a aceptar.
+Y sí... qué cobarde mi corazón, porque se enamoró de ti antes de que yo pudiera darme cuenta.</div>
+                
+                <audio id="audioCancion13" src="cancion13.mp3" preload="auto"></audio>
+                <button class="boton-reproductor" onclick="controlarAudioTiempos('audioCancion13', 56, 220)">
+                    <span id="icono-audioCancion13">▶</span> &nbsp; Escuchar Melodía
+                </button>
+            </div>
+
+            <div class="seccion-titulo-musica">✨ Tu Cicatriz ✨</div>
+            <div class="contenedor-musica">
+                <div class="titulo-musica">🎵 Notas en mi cabeza</div>
+                <div class="dedicatoria-cancion">Esta canción me da mucha risa porque creo que explica perfectamente cómo terminaste adueñándote de mi cabeza.
+Sin pedir permiso te pusiste a husmear in mis pensamientos, te robaste mis playlists, mis canciones favoritas y hasta mis ganas de estar solo. Qué abusiva, ¿no? JAJAJA.
+Y lo peor es que dejaste una marca tan bonita que ya ni quiero borrarla.
+Así que, si algún día encuentro esa famosa "cicatriz"... no pienso curarla.
+Prefiero que siempre tenga tu nombre.</div>
+                
+                <audio id="audioCancion14" src="cancion14.mp3" preload="auto"></audio>
+                <button class="boton-reproductor" onclick="controlarAudioTiempos('audioCancion14', 45, 141)">
+                    <span id="icono-audioCancion14">▶</span> &nbsp; Escuchar Melodía
+                </button>
+            </div>
+
+            <div class="subtitulo-fecha" style="justify-content: center; margin-top: 40px;">💌 SOLO QUIERO DECIRTE QUE...</div>
+            <div class="bloque-texto" style="font-size: 16px; line-height: 1.85; text-align: justify; padding: 10px;">
+                Gracias por cada minuto que me regalaste, por cada salida, por cada conversación, por cada abrazo, por escucharme cuando lo necesitaba y por dejarme escuchar también tus historias.
+
+                Gracias por hacerme sentir querido, por confiar en mí y por todos esos detalles que quizás para ti fueron pequeños, pero que para mí significaron el mundo. Nunca voy a olvidar la salchipapa, las caminatas para acompañarte a casa, las risas, las canciones, las cartas, las miradas y todas esas tardes que hicieron que el tiempo se pasara volando.
+
+                Tal vez nunca dimensionaste lo feliz que me hacías con cosas tan simples como decirme "nos vemos" o sacar un rato de tu día para estar conmigo. Yo sí lo sentía, y lo valoré desde el primer momento.
+
+                Llegaye a una vida que llevaba mucho tiempo en silencio y, sin darte cuenta, la llenaste de momentos que voy a recordar con muchísimo cariño.
+
+                Gracias por haber sido tú.
+                Y gracias por haberme permitido conocerte, porque puedo decir con toda honestidad que conocerte ha sido una de las cosas más bonitas que me han pasado.
+            </div>
+
+            <div class="firma">Con todo mi amor, Leonardo</div>
+        </div>
+    </div>
+
+    <script>
+        // Lluvia de corazones automática
+        const fondo = document.getElementById('corazones-fondo');
+        const simbolosCorazon = ['❤️', '💖', '💝', '💕', '✨'];
+        
+        for (let i = 0; i < 25; i++) {
+            const corazon = document.createElement('div');
+            corazon.classList.add('corazon-flotante');
+            corazon.innerText = simbolosCorazon[Math.floor(Math.random() * simbolosCorazon.length)];
+            corazon.style.left = Math.random() * 100 + 'vw';
+            corazon.style.animationDelay = Math.random() * 6 + 's';
+            corazon.style.fontSize = Math.random() * 10 + 12 + 'px';
+            fondo.appendChild(corazon);
+        }
+
+        function abrirCarta() {
+            const sobre = document.getElementById('sobre');
+            sobre.classList.add('abierto');
+
+            setTimeout(() => {
+                document.getElementById('contenedor-sobre').style.display = 'none';
+                const tarjeta = document.getElementById('tarjeta-carta');
+                tarjeta.classList.add('visible');
+            }, 800);
+        }
+
+        function cambiarPestana(evento, idTab) {
+            const contenidos = document.getElementsByClassName('contenido-pestana');
+            for (let i = 0; i < contenidos.length; i++) {
+                contenidos[i].classList.remove('activa');
+            }
+
+            const botones = document.getElementsByClassName('pestana-boton');
+            for (let i = 0; i < botones.length; i++) {
+                botones[i].classList.remove('activa');
+            }
+
+            document.getElementById(idTab).classList.add('activa');
+            evento.currentTarget.classList.add('activa');
+            
+            // Pausar audios al cambiar de pestaña por comodidad
+            const audios = document.getElementsByTagName('audio');
+            for(let i=0; i<audios.length; i++) {
+                audios[i].pause();
+                const icono = document.getElementById('icono-' + audios[i].id);
+                if(icono) icono.innerText = '▶';
+            }
+        }
+
+        // CONTROLADORES OCULTOS (MISTERIOSOS)
+        function controlarAudioTiempos(idAudio, tiempoInicio, tiempoFin) {
+            const audio = document.getElementById(idAudio);
+            const icono = document.getElementById('icono-' + idAudio);
+
+            if (audio.paused) {
+                if (audio.currentTime < tiempoInicio || audio.currentTime >= tiempoFin) {
+                    audio.currentTime = tiempoInicio;
+                }
+                audio.play().catch(function(error) {
+                    console.log("Error al reproducir: ", error);
+                });
+                icono.innerText = '⏸';
+            } else {
+                audio.pause();
+                icono.innerText = '▶';
+            }
+
+            audio.ontimeupdate = function() {
+                if (audio.currentTime >= tiempoFin) {
+                    audio.pause();
+                    audio.currentTime = tiempoInicio;
+                    icono.innerText = '▶';
+                }
+            };
+        }
+
+        function controlarAudioCompleto(idAudio) {
+            const audio = document.getElementById(idAudio);
+            const icono = document.getElementById('icono-' + idAudio);
+
+            if (audio.paused) {
+                audio.play().catch(function(error) {
+                    console.log("Error al reproducir: ", error);
+                });
+                icono.innerText = '⏸';
+            } else {
+                audio.pause();
+                icono.innerText = '▶';
+            }
+
+            audio.onended = function() {
+                icono.innerText = '▶';
+            };
+        }
+    </script>
+</body>
+</html>
