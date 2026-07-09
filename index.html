@@ -342,7 +342,7 @@
             box-shadow: 0 6px 20px rgba(234, 190, 197, 0.2);
         }
 
-        /* --- REPRODUCTOR DE MÚSICA MISTERIOSO --- */
+        /* --- REPRODUCTOR DE MÚSICA --- */
         .seccion-titulo-musica {
             font-family: 'Great Vibes', cursive;
             color: var(--color-guindo);
@@ -548,7 +548,7 @@ La forma en la que se acercaban a ti, cómo te buscaban y cómo se notaba que co
 Y luego los cachorros..
 Cómo se acercaban cuando llegabas.
 Puede sonar tonto, pero esas cosas hablan mucho de una persona.
-Ahí confirmé que la mujer de la que me estaba enamorando tenía una bondad inmensa.
+Ahí工夫 que la mujer de la que me estaba enamorando tenía una bondad inmensa.
 
 Y creo que ese fue el día en que entendí que ya había perdido la guerra.
 Ya no quería seguir haciéndome el fuerte.
@@ -580,7 +580,7 @@ Yo ya te amaba muchísimo, Wendy.</div>
 
             <div class="contenedor-galeria">
                 <div class="bloque-imagen-polaroid">
-                    <img src="image_55c267.png" alt="Recuerdo Feliz">
+                    <img src="imagen3.jpg" alt="Recuerdo Feliz">
                     <div class="pie-imagen-polaroid">Entre mas culero el barrio mas linda la morra</div>
                 </div>
             </div>
@@ -614,7 +614,7 @@ Pero, si esa "irresponsabilidad" fue conocerte y enamorarme de ti, entonces no m
                 <div class="titulo-musica">🎵 Un pedacito de nosotros</div>
                 <div class="dedicatoria-cancion">Esta canción me da risa porque me hace pensar en lo mucho que quería estar contigo. Creo que hasta le tenía celos a cualquier cosa que pasara más tiempo contigo que yo. JAJAJA.
 Mientras más te conocía, más quería verte, escucharte y robarte otra sonrisa. Qué peligroso fue conocerte... terminé más enamorado de lo que mi orgullo estaba dispuesto a aceptar.
-Y sí... qué cobarde mi corazón, porque se enamoró de ti antes de que yo pudiera darme cuenta.</div>
+Y sí... qué cobarde mi corazón, porque se enemoró de ti antes de que yo pudiera darme cuenta.</div>
                 
                 <audio id="audioCancion13" src="cancion13.mp3" preload="auto"></audio>
                 <button class="boton-reproductor" onclick="controlarAudioTiempos('audioCancion13', 56, 220)">
@@ -684,7 +684,7 @@ Prefiero que siempre tenga tu nombre.</div>
         function cambiarPestana(evento, idTab) {
             const contenidos = document.getElementsByClassName('contenido-pestana');
             for (let i = 0; i < contenidos.length; i++) {
-                contenidos[i].classList.remove('activa');
+                contenidoss[i].classList.remove('activa');
             }
 
             const botones = document.getElementsByClassName('pestana-boton');
@@ -704,7 +704,7 @@ Prefiero que siempre tenga tu nombre.</div>
             }
         }
 
-        // CONTROLADORES OCULTOS (MISTERIOSOS)
+        // CONTROLADORES DE AUDIO
         function controlarAudioTiempos(idAudio, tiempoInicio, tiempoFin) {
             const audio = document.getElementById(idAudio);
             const icono = document.getElementById('icono-' + idAudio);
